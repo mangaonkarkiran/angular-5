@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-lg-12">
+      <h1 class="page-header">Supplier List</h1>
+  </div>
+</div>
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr class="table-primary">
+      <th scope="col">Supplier Name</th>
+      <th scope="col">Client Account</th>
+      <th scope="col">Supplier Type</th>
+      <th scope="col">Country</th>
+      <th scope="col">Payment Terms</th>
+      <th scope="col">Payment Type</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of allSupplier">
+      <td>{{item.supplierName}}</td>
+      <td>{{item.clientAccount}}</td>
+      <td>{{item.supplierType}}</td>
+      <td>{{item.country}}</td>
+      <td>{{item.paymentTerms}}</td>
+      <td>{{item.paymentType}}</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/suppliers/supplierDetails', item.id]">Edit</button>
+        <button type="button" class="btn btn-secondary btn-sm" (click)="deleteSupplier(item.id)">Delete</button>
+      </td>
+    </tr> 
+  </tbody>
+</table>    
+

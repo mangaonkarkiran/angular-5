@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-lg-12">
+      <h1 class="page-header">Assignee Details</h1>
+  </div>
+</div>
+<table class="table table-bordered">
+  <thead class="table-primary">
+    <tr>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of allAssigneeDetails">
+      <td>
+          <span class="treetable-toggler" (click)="onSelect(item.idAssignee)">
+              <i class="pi pi-fw pi-chevron-right"></i>
+          </span>
+        {{item.fisrtName}}</td>
+      <td>{{item.lastName}}</td>
+      <td>{{item.Title}}</td>
+    </tr>
+    <!-- <tr>
+      <td colspan="3">
+          <table class="table table-bordered">
+              <thead>
+                  <tr>
+                    <th scope="col">Account</th>
+                    <th scope="col">Job Reference</th>
+                    <th scope="col">Origin</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <td>Royal Bank of Scotland </td>
+                      <td>LDN 07864201 </td>
+                      <td>UK </td>
+                      <td>Dubai </td>
+                      <td>Booked</td>
+                    </tr>
+                </tbody>
+          </table>
+      </td>
+    </tr> -->
+   
+  </tbody>
+</table>

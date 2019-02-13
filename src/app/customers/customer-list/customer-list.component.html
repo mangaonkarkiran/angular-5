@@ -1,0 +1,81 @@
+<div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Dashboard</h1>
+        </div>
+</div>
+
+<form [formGroup]="customerForm" (ngSubmit)="onCustomerFormSubmit()">
+    <div class="form-group row">
+      <label for="firstName" class="col-sm-2 col-form-label text-right">First Name</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" formControlName="firstName">
+      </div>
+    </div>
+    <div class="form-group row">
+        <label for="lastName" class="col-sm-2 col-form-label text-right">Last Name</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" formControlName="lastName">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="city" class="col-sm-2 col-form-label text-right">City</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" formControlName="city">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="email" class="col-sm-2 col-form-label text-right">Email</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" formControlName="email">
+        </div>
+    </div>
+    <button *ngIf="!createCustomerLabel" class="btn btn-primary" >CREATE</button>  
+    <button *ngIf="createCustomerLabel" class="btn btn-primary" >UPDATE</button> 
+</form> 
+
+<div class="m-t-10">
+ <div class="float-left">
+     <h4>Customer Details</h4>
+ </div>
+
+ <div class="form-group float-right">
+    <input type="text" class="form-control search" [(ngModel)]="queryString" placeholder="Please Search By City">
+ </div>
+ 
+ <table class="table table-striped">
+   <tr>
+       <th>Id</th> 
+       <th>Full Name</th>
+       <th>City</th>
+       <th>Email</th>
+       <th>Action</th>
+    </tr>
+   <tr *ngFor="let item of allCustomer | SearchBy: queryString : 'city' ; " >
+     <td>{{item.id}}</td> 
+     <td>{{item.firstName | titlecase}} {{item.lastName | titlecase}}</td>
+     <td>{{item.city | titlecase}}</td>
+     <td>{{item.email}}</td>
+     <td><button type="button" class="btn btn-primary btn-sm" (click)="editCustomer(item.id)">Edit</button>  
+         <button type="button" class="btn btn-primary btn-sm" (click)="deleteCustomer(item.id)" >Delete</button></td>
+    </tr>
+ </table> 
+
+ <nav aria-label="Page navigation example">
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+            <a class="page-link" (click)="setPage(1)">First</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+            <a class="page-link" (click)="setPage(pager.currentPage - 1)">Previous</a>
+        </li>
+        <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+            <a class="page-link" (click)="setPage(page)">{{page}}</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a class="page-link" (click)="setPage(pager.currentPage + 1)">Next</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a class="page-link" (click)="setPage(pager.totalPages)">Last</a>
+        </li>
+    </ul>
+ </nav>

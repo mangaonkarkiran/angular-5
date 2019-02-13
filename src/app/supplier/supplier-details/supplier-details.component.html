@@ -1,0 +1,262 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Supplier Details</h1>
+    </div>
+</div>
+<form [formGroup]="supplierForm" (ngSubmit)="onSupplierFormSubmit()">
+   <div class="row">
+       <div class="col-sm-6">
+          <div class="form-group row">
+              <label for="supplierName" class="col-sm-4 col-form-label text-right"> <span class="text-danger">*</span> Supplier Name  </label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" formControlName="supplierName">
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="clientAccount" class="col-sm-4 col-form-label text-right"><span class="text-danger">*</span> Client Account</label>
+              <div class="col-sm-8">
+                <select class="form-control" formControlName="clientAccount">
+                    <option value="">Select..</option>
+                    <option *ngFor="let item of allAccount" [ngValue]="item.name">{{item.name}}</option>
+                </select>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="sterlingReference" class="col-sm-4 col-form-label text-right"> <span class="text-danger">*</span>Sterling/UG Reference</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" formControlName="sterlingReference">
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="supplierType" class="col-sm-4 col-form-label text-right"><span class="text-danger">*</span> Supplier Type</label>
+              <div class="col-sm-8">
+                 <select class="form-control" formControlName="supplierType">
+                    <option value="">Select..</option>
+                    <option *ngFor="let item of allSupplierType" [ngValue]="item.name">{{item.name}}</option>
+                </select>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="assignee" class="col-sm-4 col-form-label text-right">Assignee</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" formControlName="assignee">
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="alternativeReference" class="col-sm-4 col-form-label text-right">Alternative Reference</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" formControlName="alternativeReference">
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="postalCode" class="col-sm-4 col-form-label text-right">Postal Code</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" formControlName="postalCode">
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="country" class="col-sm-4 col-form-label text-right"><span class="text-danger">*</span> Country </label>
+              <div class="col-sm-8">
+                <select class="form-control" formControlName="country">
+                    <option value="">Select..</option>
+                    <option *ngFor="let item of allCountry" [ngValue]="item.name">{{item.name}}</option>
+                </select>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="addressLine1" class="col-sm-4 col-form-label text-right">Address Line 1</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" formControlName="addressLine1">
+              </div>
+          </div>
+          <div class="form-group row">
+                <label for="addressLine2" class="col-sm-4 col-form-label text-right">Address Line 2</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" formControlName="addressLine2">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="town" class="col-sm-4 col-form-label text-right">Town</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" formControlName="town">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="state" class="col-sm-4 col-form-label text-right">Country/State</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" formControlName="state">
+                </div>
+            </div>
+             <div class="form-group row">
+                <label for="supplierContact" class="col-sm-4 col-form-label text-right"> Supplier Contact </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" formControlName="supplierContact">
+                </div>
+            </div>
+             <div class="form-group row">
+                <label for="telephone" class="col-sm-4 col-form-label text-right"> Telephone </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" formControlName="telephone">
+                </div>
+            </div>
+             <div class="form-group row">
+                <label for="fax" class="col-sm-4 col-form-label text-right">Fax </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" formControlName="fax">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="mobile" class="col-sm-4 col-form-label text-right">Mobile</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" formControlName="mobile">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="email" class="col-sm-4 col-form-label text-right">Email</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" formControlName="email">
+                </div>
+            </div>
+
+       </div>
+       <div class="col-sm-6">
+          <div class="form-group row">
+              <label for="currency" class="col-sm-4 col-form-label text-right"><span class="text-danger">*</span> Currency</label>
+              <div class="col-sm-8">
+                    <input type="text" class="form-control" formControlName="currency">
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="defaultVATRate" class="col-sm-4 col-form-label text-right"> <span class="text-danger">*</span> Default VAT Rate</label>
+              <div class="col-sm-8">
+                <select class="form-control" formControlName="defaultVATRate">
+                    <option value="">Select..</option>
+                    <option *ngFor="let item of alldefaultVATRate" [ngValue]="item">{{item}}</option>
+                </select>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="VATRegisterNumber" class="col-sm-4 col-form-label text-right">VAT Register Number</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" formControlName="VATRegisterNumber">
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="defaultGLCode" class="col-sm-4 col-form-label text-right">Default GL Code</label>
+              <div class="col-sm-8">
+                    <select class="form-control" formControlName="defaultGLCode">
+                        <option value="">Select..</option>
+                        <option *ngFor="let item of alldefaultGLCode" [ngValue]="item">{{item}}</option>
+                    </select>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="supplierPrefix" class="col-sm-4 col-form-label text-right">Supplier Prefix</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" formControlName="supplierPrefix">
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="supplierDescriptionType" class="col-sm-4 col-form-label text-right">Supplier Description Type</label>
+              <div class="col-sm-8">
+                <select class="form-control" formControlName="supplierDescriptionType">
+                    <option value="">Select..</option>
+                    <option *ngFor="let item of allsupplierDescriptionType" [ngValue]="item">{{item}}</option>
+                </select>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="paymentTerms" class="col-sm-4 col-form-label text-right"><span class="text-danger">*</span> Payment Terms</label>
+              <div class="col-sm-8">
+                <select class="form-control" formControlName="paymentTerms">
+                    <option value="">Select..</option>
+                    <option *ngFor="let item of allpaymentTerms" [ngValue]="item">{{item}}</option>
+                </select>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="paymentType" class="col-sm-4 col-form-label text-right"><span class="text-danger">*</span> Payment Type</label>
+              <div class="col-sm-8">
+               <select class="form-control" formControlName="paymentType">
+                    <option value="">Select..</option>
+                    <option *ngFor="let item of allpaymentType" [ngValue]="item">{{item}}</option>
+                </select>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="accountNumber" class="col-sm-4 col-form-label text-right">Account Number/IBAN</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" formControlName="accountNumber">
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="sortCode" class="col-sm-4 col-form-label text-right">Sort Code/BIC</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" formControlName="sortCode">
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="supplierRemittance" class="col-sm-4 col-form-label text-right"><span class="text-danger">*</span> Supplier Remittance</label>
+              <div class="col-sm-8">
+                <select class="form-control" formControlName="supplierRemittance">
+                    <option value="">Select..</option>
+                    <option *ngFor="let item of allsupplierRemittance" [ngValue]="item">{{item}}</option>
+                </select>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="status" class="col-sm-4 col-form-label text-right"><span class="text-danger">*</span> Status</label>
+              <div class="col-sm-8">
+                <select class="form-control" formControlName="status">
+                    <option value="">Select..</option>
+                    <option *ngFor="let item of allstatus" [ngValue]="item">{{item}}</option>
+                </select>
+              </div>
+          </div>
+           <div class="form-group row">
+              <label for="approvedBy" class="col-sm-4 col-form-label text-right">Approved By</label>
+              <div class="col-sm-8">
+                 <input type="text" class="form-control" formControlName="approvedBy">
+              </div>
+          </div>
+         <div class="form-group row">
+              <label for="approvedDate" class="col-sm-4 col-form-label text-right">Approved Date</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" formControlName="approvedDate" bsDatepicker>
+              </div>
+          </div>
+           <div class="form-group row">
+              <label for="suspendedBy" class="col-sm-4 col-form-label text-right">Suspended By</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" formControlName="suspendedBy">
+              </div>
+          </div>
+            <div class="form-group row">
+              <label for="suspendedDate" class="col-sm-4 col-form-label text-right">Suspended Date</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" formControlName="suspendedDate" bsDatepicker>
+              </div>
+          </div>
+           <div class="form-group row">
+              <label for="rejectedBy" class="col-sm-4 col-form-label text-right">Rejected By</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" formControlName="rejectedBy">
+              </div>
+          </div>
+          <div class="form-group row">
+                <label for="rejectedDate" class="col-sm-4 col-form-label text-right">Rejected Date</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" formControlName="rejectedDate" bsDatepicker >
+                </div>
+            </div>
+       </div>
+       <div class="col-sm-12">
+            <button *ngIf="!statusLabel"  class="btn btn-primary float-right">Save</button>
+            <button *ngIf="statusLabel"  class="btn btn-primary float-right" >UPDATE</button> 
+       </div>
+   </div>
+   
+</form>
+
+ 
+      
